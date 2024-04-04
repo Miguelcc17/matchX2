@@ -52,9 +52,9 @@ def get_df(archivo):
 
     elif extension == 'json':
         # Leer el archivo JSON y convertir a DataFrame
-        with open(archivo, 'r') as f:
-            data = json.load(f)
-        df = pd.json_normalize(data)
+        # with open(archivo, 'r') as f:
+        #     data = json.load(f)
+        df = pd.read_json(archivo, encoding='utf-8')
 
     else:
         raise ValueError("Extensión de archivo no compatible. Use 'csv', 'xlsx', 'xls' o 'json'.")
