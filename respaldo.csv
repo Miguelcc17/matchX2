@@ -1,0 +1,25 @@
+,word,lemmatized_text,tag,language
+0,rojo,rojo,color,es
+1,azul,azul,color,es
+2,amarillo,amarillo,color,es
+3,naranja,naranjar,color,es
+4,verde,verde,color,es
+5,violeta,violetar,color,es
+6,anaranjado,anaranjado,color,es
+7,morado,morar,color,es
+8,verde lima,verde lima,color,es
+9,blanco,blanco,color,es
+10,negro,negro,color,es
+11,gris,gris,color,es
+12,red,red,color,en
+13,blue,blue,color,en
+14,yellow,yellow,color,en
+15,orange,orange,color,en
+16,green,green,color,en
+17,violet,violet,color,en
+18,vermilion,vermilion,color,en
+19,chartreuse,chartreuse,color,en
+20,magenta,magenta,color,en
+21,white,white,color,en
+22,black,black,color,en
+23,gray,gray,color,en
