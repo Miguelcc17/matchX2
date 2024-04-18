@@ -79,7 +79,7 @@ def detect_language_columns(file_path: str = None) -> dict:
     Parameters:
     - file_path (str): Path of the file to load.
 
-     Returns:
+    Returns:
     - dict: Dictionary with language detection results for each column's unique values.
     """
     if file_path is None or len(file_path) == 0:
