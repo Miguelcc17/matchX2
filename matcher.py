@@ -16,9 +16,6 @@ import json
 import csv
 import re
 
-from langdetect import detect
-from langdetect.lang_detect_exception import LangDetectException
-
 
 def get_df(file_path: str = None) -> pd.DataFrame:
     """
