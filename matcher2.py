@@ -292,7 +292,9 @@ def harmony_datum_matcher(pathFiles: str = None, query: list = None, strict: int
 
         # Convert the list to a NumPy array and return the second column
         data_match = np.array(data_match)
-        return data_match[:, 1]
+        
+        # return data_match[:, 1]
+        return data_match
 
     # Load DataFrames from files
     df_origin = get_df(exists_file(pathFiles, 'origin'))
@@ -320,7 +322,7 @@ def harmony_datum_matcher(pathFiles: str = None, query: list = None, strict: int
             
         # df_alternative_result = df_alternative_result.merge(df_origin_result,how='cross')
         if with_out_duplicates == 0:
-            df_alternative_result.to_json(f'{pathFiles}/result_withDuplicates_simple.json')
+            df_alternative_result.to_csv(f'{pathFiles}/result_withDuplicates_simple.csv')
             # df_origin_result.to_json(f'{pathFiles}/Oresult_withDuplicates_simple.json')
         else:
             df_alternative_result.drop_duplicates().to_json(f'{pathFiles}/result_withOutDuplicates_simple.json')
@@ -333,17 +335,19 @@ def harmony_datum_matcher(pathFiles: str = None, query: list = None, strict: int
             matriz_data_match = []
             for query_x in query:
                 matriz_data_match.append(harmonize_index_match(df_origin, df_alternative, query_x, precision=70))
-            print(matriz_data_match)
             # Convert the matrix to a dictionary
             variables = arr_to_dic(matriz_data_match)
             
             # Perform matching on pairs of columns
             result = matcher_pair_columns(variables)
-            
             # Save the result to JSON with or without duplicates
             if with_out_duplicates == 0:
-                df_result = df_alternative.iloc[result].reset_index(drop=True)
+                df_agregar = df_origin.iloc[result[:, 0]]
+
+                df_result = df_alternative.iloc[result[:,1]].reset_index(drop=True)
                 # print(df_result)
+                df_result['url_origin'] = df_agregar['product_url'].reset_index(drop=True)
+
                 df_result.to_csv(f'{pathFiles}/result_withDuplicates_multi.csv')
             else:
                 df_alternative.iloc[result].drop_duplicates().to_csv(f'{pathFiles}/result_withOutDuplicates_multi.csv')
