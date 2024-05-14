@@ -39,8 +39,7 @@ def get_df(archivo):
         with open(archivo, 'rb') as f:
             result = chardet.detect(f.read())
             encoding = result['encoding']
-            print(encoding)
-
+            
         #Intentar diferentes delimitadores hasta encontrar uno válido
         posibles_delimitadores = [',', ';', '\t', '|']
         for delimitador in posibles_delimitadores:
